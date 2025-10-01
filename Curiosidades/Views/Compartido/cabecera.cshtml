@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Titulo"]</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <h1>Curiosidades para aprender más sobre ASP.NET MVC y Razor</h1>
+        <nav>
+            <a href="/">Inicio</a>
+            <a href="/Curiosidades/Index/1">Curiosidad 1</a>
+            <a href="/Curiosidades/Index/2">Curiosidad 2</a>
+            <a href="/Curiosidades/Index/3">Curiosidad 3</a>
+            <a href="/Curiosidades/Index/4">Curiosidad 4</a>
+        </nav>
+    </header>
+
+
+    <main>
+        <h2>@ViewData["Titulo"]</h2>
+        @RenderBody()
+        <!-- Aquí inserta el contenido de la página que usa este Layout -->
+    </main>
+</body>
+</html>

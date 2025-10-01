@@ -1,0 +1,47 @@
+﻿<!-- Incluir Bootstrap desde CDN -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="w-100" style="max-width: 400px;">
+        <h1 class="mb-4 text-center">Cálculo de alquiler para su vivienda</h1>
+
+        <form method="post" class="p-4 border rounded bg-light shadow-sm">
+
+            <!-- Zona -->
+            <div class="mb-3">
+                <label for="zona" class="form-label">Zona</label>
+                <select id="zona" name="zona" class="form-select">
+                    <option value="">-- Selecciona --</option>
+                    <option value="getafe" @(ViewBag.zona == "getafe" ? "selected" : "")>Getafe</option>
+                    <option value="fuenlabrada" @(ViewBag.zona == "fuenlabrada" ? "selected" : "")>Fuenlabrada</option>
+                    <option value="mostoles" @(ViewBag.zona == "mostoles" ? "selected" : "")>Móstoles</option>
+                    <option value="alcorcon" @(ViewBag.zona == "alcorcon" ? "selected" : "")>Alcorcón</option>
+                </select>
+            </div>
+
+            <!-- Metros cuadrados -->
+            <div class="mb-3">
+                <label for="m2" class="form-label">Metros cuadrados (m2)</label>
+                <input type="number" name="m2" value="@ViewBag.m2" class="form-control" required />
+            </div>
+
+            <!-- Piscina (checkbox junto al label) -->
+            <div class="mb-3 form-check d-flex align-items-center">
+                <input type="checkbox" name="piscina" class="form-check-input me-2" id="piscina" @(ViewBag.piscina == true ? "checked" : "") />
+                <label class="form-check-label mb-0" for="piscina">Tiene piscina</label>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Calcular</button>
+        </form>
+        <div class="alert alert-success mt-3 text-center">
+            <!-- Mostrar precio -->
+            @if (ViewBag.precio != null)
+            {
+                    double precio = ViewBag.precio;
+                    <p>Tu precio de alquiler es: <strong>@precio.ToString("F2")€</strong></p>
+           
+            }
+        </div>
+    </div>
+</div>

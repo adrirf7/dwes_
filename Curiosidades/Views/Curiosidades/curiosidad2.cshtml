@@ -1,0 +1,26 @@
+﻿@{
+    Layout = "~/Views/Compartido/cabecera.cshtml";
+    var productos = ViewBag.Productos;
+}
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Categoría</th>
+            <th>Precio (€)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in productos)
+        {
+            <tr>
+                <td>@p.Nombre</td>
+                <td>@p.Categoria</td>
+                <td>@p.Precio.ToString("F2")</td>
+                <!-- Mostramos el precio con exactamente 2 decimales usando ToString("F2") -->
+            </tr>
+        }
+    </tbody>
+</table>

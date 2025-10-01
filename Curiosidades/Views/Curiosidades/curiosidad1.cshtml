@@ -1,0 +1,31 @@
+﻿@{
+    Layout = "~/Views/Compartido/cabecera.cshtml";
+    string[,] horario = ViewBag.Horario;
+    string[] dias = { "Lunes", "Martes", "Miércoles", "Jueves", "Viernes" };
+}
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Hora</th>
+            @for (int d = 0; d < dias.Length; d++)
+            {
+                <th>@dias[d]</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @for (int h = 0; h < horario.GetLength(0); h++)
+        {
+            <tr>
+                <td>@(h + 1)ª</td>
+                @for (int d = 0; d < horario.GetLength(1); d++)
+                {
+                    <td>@horario[h, d]</td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+

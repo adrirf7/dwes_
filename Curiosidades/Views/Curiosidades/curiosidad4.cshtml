@@ -1,0 +1,43 @@
+﻿@{
+    Layout = "~/Views/Compartido/cabecera.cshtml";
+}
+
+
+<h3>Calculadora de IMC (Índice de Masa Corporal)</h3>
+
+<form method="post" action="/Curiosidades/IMC">
+    <label for="peso">Peso (kg):</label>
+    <input type="text" name="peso" value="@ViewBag.peso" required />
+    <br />
+
+    <label for="altura">Altura (m):</label>
+    <input type="text" name="altura" value="@ViewBag.altura" required />
+    <br />
+    <button type="submit">Calcular</button>
+</form>
+
+
+@if (ViewBag.IMC != null)
+{
+    double imc = ViewBag.IMC;
+    <p>Tu IMC es: <strong>@imc.ToString("F2")</strong></p>
+    <p>
+        Clasificación:
+        @if (imc < 18.5)
+        {
+            <span>Bajo peso</span>
+        }
+        else if (imc < 25)
+        {
+            <span>Normal</span>
+        }
+        else if (imc < 30)
+        {
+            <span>Sobrepeso</span>
+        }
+        else
+        {
+            <span>Obesidad</span>
+        }
+    </p>
+}
